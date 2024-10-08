@@ -1,19 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleUseCaseControl {
+public class VehicleUseCaseControl implements InputBoundary {
     // Fields
-    VehicleEntity vehicleEntity = null;
-    VehicleUIConsoleOutput vehicleUIConsoleOutput = null;
-    List<responseData> responseDataList = new ArrayList<>();  
+    private VehicleEntity vehicleEntity;
+    private OutputBoundary outputBoundary;  
+    private List<responseData> responseDataList = new ArrayList<>(); 
 
 
-    public VehicleUseCaseControl(VehicleEntity vehicleEntity, VehicleUIConsoleOutput vehicleUIConsoleOutput) {
+    public VehicleUseCaseControl(VehicleEntity vehicleEntity, OutputBoundary outputBoundary) {
         this.vehicleEntity = vehicleEntity;
-        this.vehicleUIConsoleOutput = vehicleUIConsoleOutput;
+        this.outputBoundary = outputBoundary;
     }
 
 
+    @Override
     public void execute(requestData requestData) {
         try {
 
@@ -34,22 +35,22 @@ public class VehicleUseCaseControl {
 
             } else {
 
-                vehicleUIConsoleOutput.displayError("Vehicle value and engine must be possitve.");
+                outputBoundary.displayError("Vehicle value and engine capacity must be positive.");
             }
 
         } catch (NumberFormatException e) {
 
-            vehicleUIConsoleOutput.displayError("Invalid input. Nhap 1 so.");
+            outputBoundary.displayError("Invalid input. Please enter valid numbers.");
         }
     }
 
 
     public void displayAllVehicles() {
         if (responseDataList.isEmpty()) {
-            vehicleUIConsoleOutput.displayError("No vehicles to display.");
+            outputBoundary.displayError("No vehicles to display.");
         } else {
             for (responseData responseData : responseDataList) {
-                vehicleUIConsoleOutput.displayResult(responseData);
+                outputBoundary.displayResult(responseData);
             }
         }
     }

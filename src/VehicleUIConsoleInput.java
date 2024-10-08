@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class VehicleUIConsoleInput {
-    // Control instance
-    VehicleUseCaseControl vehicleUseCaseControl = null;
+    // InputBoundary instance (control)
+    private InputBoundary inputBoundary;
 
     // Constructor
-    public VehicleUIConsoleInput(VehicleUseCaseControl vehicleUseCaseControl) {
-        this.vehicleUseCaseControl = vehicleUseCaseControl;
+    public VehicleUIConsoleInput(InputBoundary inputBoundary) {
+        this.inputBoundary = inputBoundary;
     }
 
 
@@ -15,9 +15,9 @@ public class VehicleUIConsoleInput {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n===== Vehicle Registration Menu =====");
-            System.out.println("1. Input vehicle details and create vehicle");
-            System.out.println("2. Display all vehicle tax details");
+            System.out.println("\n===== Menu DK xe =====");
+            System.out.println("1. Them thong tin xe");
+            System.out.println("2. Xem tat ca thong tin va thue");
             System.out.println("3. Exit");
             System.out.print("Choose an option: ");
 
@@ -28,7 +28,7 @@ public class VehicleUIConsoleInput {
                     input();  
                     break;
                 case "2":
-                    vehicleUseCaseControl.displayAllVehicles();  
+                    ((VehicleUseCaseControl) inputBoundary).displayAllVehicles();  
                     break;
                 case "3":
                     System.out.println("Exiting program...");
@@ -44,22 +44,22 @@ public class VehicleUIConsoleInput {
     public void input() {
         Scanner sc = new Scanner(System.in);
 
-        // Collect vehicle details
-        System.out.print("Enter owner name: ");
+
+        System.out.print("Ten chu xe: ");
         String ownerName = sc.nextLine();
 
-        System.out.print("Enter vehicle value: ");
+        System.out.print("Gia tien cua xe: ");
         String strVehicleValue = sc.nextLine();
 
-        System.out.print("Enter engine capacity (cc): ");
+        System.out.print("Phan khoi(cc): ");
         String strEngineCapacity = sc.nextLine();
 
 
         requestData requestData = new requestData(ownerName, strVehicleValue, strEngineCapacity);
 
 
-        vehicleUseCaseControl.execute(requestData);
+        inputBoundary.execute(requestData);
 
-        System.out.println("Vehicle details stored successfully!");
+        System.out.println("Thong tin xe them thanh cong!");
     }
 }

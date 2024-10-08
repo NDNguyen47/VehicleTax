@@ -4,11 +4,10 @@ public class App {
     public static void main(String[] args) throws IOException {
 
         VehicleEntity vehicleEntity = new VehicleEntity();
-        VehicleUIConsoleOutput vehicleUIConsoleOutput = new VehicleUIConsoleOutput();
+        OutputBoundary outputBoundary = new VehicleUIConsoleOutput();
 
 
-        VehicleUseCaseControl vehicleUseCaseControl = new VehicleUseCaseControl(vehicleEntity, vehicleUIConsoleOutput);
-
+        InputBoundary vehicleUseCaseControl = new VehicleUseCaseControl(vehicleEntity, outputBoundary);
 
         VehicleUIConsoleInput uiConsoleInput = new VehicleUIConsoleInput(vehicleUseCaseControl);
 

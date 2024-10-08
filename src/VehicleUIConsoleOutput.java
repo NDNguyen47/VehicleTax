@@ -1,16 +1,18 @@
-public class VehicleUIConsoleOutput {
+public class VehicleUIConsoleOutput implements OutputBoundary {
 
-    // Method to display the result using ResponseData
+
+    @Override
     public void displayResult(responseData responseData) {
         System.out.println("\n--- Vehicle Tax Information ---");
-        System.out.println("Owner: " + responseData.ownerName);
-        System.out.println("Vehicle Value: " + responseData.vehicleValue);
-        System.out.println("Engine Capacity: " + responseData.engineCapacity + " cc");
+        System.out.println("Chu xe: " + responseData.ownerName);
+        System.out.println("Gia tri xe: " + responseData.vehicleValue);
+        System.out.println("Phan khoi: " + responseData.engineCapacity + " cc");
         System.out.println("Tax: " + responseData.tax);
         System.out.println("-------------------------------");
     }
 
 
+    @Override
     public void displayError(String errorMessage) {
         System.out.println("Error: " + errorMessage);
     }
