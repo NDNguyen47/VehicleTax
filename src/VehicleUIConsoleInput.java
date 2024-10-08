@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class VehicleUIConsoleInput {
-    // InputBoundary instance (control)
     private InputBoundary inputBoundary;
 
     // Constructor
