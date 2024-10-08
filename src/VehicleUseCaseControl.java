@@ -3,12 +3,12 @@ import java.util.List;
 
 public class VehicleUseCaseControl implements InputBoundary {
     // Fields
-    private VehicleEntity vehicleEntity;
+    private VehicleTaxCaculateEntity vehicleEntity;
     private OutputBoundary outputBoundary;  
     private List<responseData> responseDataList = new ArrayList<>(); 
 
 
-    public VehicleUseCaseControl(VehicleEntity vehicleEntity, OutputBoundary outputBoundary) {
+    public VehicleUseCaseControl(VehicleTaxCaculateEntity vehicleEntity, OutputBoundary outputBoundary) {
         this.vehicleEntity = vehicleEntity;
         this.outputBoundary = outputBoundary;
     }
@@ -27,9 +27,7 @@ public class VehicleUseCaseControl implements InputBoundary {
 
                 double tax = vehicleEntity.calculateTax(vehicleValue, engineCapacity);
 
-
                 responseData responseData = new responseData(ownerName, vehicleValue, engineCapacity, tax);
-
 
                 responseDataList.add(responseData);
 
@@ -43,8 +41,6 @@ public class VehicleUseCaseControl implements InputBoundary {
             outputBoundary.displayError("Invalid input. Please enter valid numbers.");
         }
     }
-
-
     public void displayAllVehicles() {
         if (responseDataList.isEmpty()) {
             outputBoundary.displayError("No vehicles to display.");

@@ -1,4 +1,4 @@
-public class VehicleEntity {
+public class VehicleTaxCaculateEntity {
 
     public double calculateTax(double vehicleValue, int engineCapacity) {
         if (engineCapacity < 100) {

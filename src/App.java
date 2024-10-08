@@ -3,7 +3,7 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        VehicleEntity vehicleEntity = new VehicleEntity();
+        VehicleTaxCaculateEntity vehicleEntity = new VehicleTaxCaculateEntity();
         OutputBoundary outputBoundary = new VehicleUIConsoleOutput();
 
 
