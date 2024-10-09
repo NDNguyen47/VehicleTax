@@ -12,7 +12,7 @@ import dto.responseError;
 
 public class VehicleUseCaseControl implements InputBoundary {
     private OutputBoundary outputBoundary;
-    private List<VehicleTaxCaculateEntity> vehicleList = new ArrayList<>();  // Danh sách các đối tượng xe
+    private List<VehicleTaxCaculateEntity> vehicleList = new ArrayList<>();  // Danh sách xe
 
 
     public VehicleUseCaseControl(OutputBoundary outputBoundary) {
@@ -35,13 +35,13 @@ public class VehicleUseCaseControl implements InputBoundary {
 
             } else {
 
-                responseError responseError = new responseError("Giá trị xe và dung tích xy-lanh phải là số dương.");
+                responseError responseError = new responseError("Gia tri xe và dung tich xy-lanh phai là duong (+).");
                 outputBoundary.displayError(responseError);
             }
 
         } catch (NumberFormatException e) {
 
-            responseError responseError = new responseError("Dữ liệu không hợp lệ. Vui lòng nhập số.");
+            responseError responseError = new responseError("Du lieu khong hop le. Vui long nhap so.");
             outputBoundary.displayError(responseError);
         }
     }
@@ -49,7 +49,7 @@ public class VehicleUseCaseControl implements InputBoundary {
 
     public void displayAllVehicles() {
         if (vehicleList.isEmpty()) {
-            responseError responseError = new responseError("Không có xe nào để hiển thị.");
+            responseError responseError = new responseError("Khong co xe noo đe hien thi.");
             outputBoundary.displayError(responseError);
         } else {
             for (VehicleTaxCaculateEntity vehicle : vehicleList) {
