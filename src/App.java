@@ -1,17 +1,14 @@
-import java.io.IOException;
+import Boundary.OutputBoundary;
+import Boundary.VehicleUIConsoleInput;
+import Boundary.VehicleUIConsoleOutput;
+import Control.VehicleUseCaseControl;
 
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        VehicleTaxCaculateEntity vehicleEntity = new VehicleTaxCaculateEntity();
         OutputBoundary outputBoundary = new VehicleUIConsoleOutput();
-
-
-        InputBoundary vehicleUseCaseControl = new VehicleUseCaseControl(vehicleEntity, outputBoundary);
-
+        VehicleUseCaseControl vehicleUseCaseControl = new VehicleUseCaseControl(outputBoundary);
         VehicleUIConsoleInput uiConsoleInput = new VehicleUIConsoleInput(vehicleUseCaseControl);
-
-
         uiConsoleInput.showMenu();
     }
 }

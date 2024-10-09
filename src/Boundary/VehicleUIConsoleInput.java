@@ -1,4 +1,9 @@
+package Boundary;
+
 import java.util.Scanner;
+
+import Control.VehicleUseCaseControl;
+import dto.requestData;
 
 public class VehicleUIConsoleInput {
     private InputBoundary inputBoundary;
